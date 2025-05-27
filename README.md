@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+Документация проекта «YepGames»
+________________________________________
+Описание проекта
+YepGames — это полноценное веб-приложение, реализующее концепцию маркетплейса видеоигр. Приложение предоставляет пользователям широкий спектр функций, включая регистрацию и аутентификацию, просмотр обширного каталога игр, удобную систему корзины и оформления заказов, управление уникальной виртуальной валютой YepCoin, а также мощную админ-панель для эффективного управления контентом.
+Приложение разработано на основе библиотеки React с применением модульной архитектуры, что обеспечивает высокую масштабируемость и легкость поддержки. В процессе разработки использованы современные подходы к управлению состоянием и маршрутизацией, что гарантирует стабильную и быструю работу приложения.
+________________________________________
+Структура проекта
+Проект организован по модульному принципу, что упрощает навигацию и разработку новых функций. Ниже представлена структура основных директорий и файлов:
+src/
+├── App.jsx                  — Главный компонент приложения, точка входа для всей логики.
+├── index.js                — Основной файл для рендеринга React-приложения.
+├── Layout.jsx              — Общий шаблон страницы, включающий навигацию и футер.
+├── router/                 — Директория для определения маршрутов приложения, включая защищённые маршруты.
+│   ├── index.js            — Основной файл для конфигурации React Router DOM.
+│   ├── ProtectedRoute.jsx  — Компонент для защиты маршрутов, требующих аутентификации.
+│   └── AdminProtectedRoute.jsx — Компонент для защиты маршрутов, доступных только администраторам.
+├── components/             — Переиспользуемые UI-компоненты, такие как кнопки, карточки, модальные окна.
+├── pages/                  — Компоненты, представляющие отдельные страницы приложения (например, Catalog, Cart, Profile, AdminPanel).
+├── contexts/               — Контексты состояния для глобального управления данными (например, AuthContext, CartContext, ThemeContext).
+├── features/               — Redux Toolkit слайсы, каждый из которых управляет состоянием определенной части приложения (например, gamesSlice, userSlice).
+├── store/                  — Конфигурация глобального хранилища Redux и пользовательские хуки для взаимодействия с ним.
+│   ├── index.js            — Настройка Redux-стора.
+│   └── hooks.js            — Пользовательские хуки для useSelector и useDispatch.
+├── locales/                — Файлы локализации для поддержки нескольких языков.
+│   ├── en.json             — Переводы на английский язык.
+│   └── ru.json             — Переводы на русский язык.
+├── styles/                 — CSS-модули для стилизации компонентов, обеспечивающие инкапсуляцию стилей.
+└── assets/                 — Статические ресурсы: изображения, иконки, шрифты и другие медиафайлы.
+    ├── images/
+    ├── icons/
+    └── fonts/
+В проекте YepGames применен комплекс современных и проверенных технологий, обеспечивающих высокую производительность, надежность и удобство разработки:
+Технология	Назначение
+React	Основная библиотека для создания пользовательских интерфейсов.
+React Router DOM	Библиотека для декларативной маршрутизации в React-приложениях.
+Redux Toolkit	Рекомендуемый подход для глобального управления состоянием, упрощает работу с Redux.
+Firebase	Облачная платформа для аутентификации пользователей и работы с базой данных.
+Context API	Встроенный механизм React для управления состоянием, таким как состояние корзины, темы, языка.
+i18next	Мощная библиотека для интернационализации и локализации интерфейса.
+CSS Modules	Подход для модулизации стилей, предотвращающий конфликты классов и обеспечивающий инкапсуляцию.
+Экспортировать в Таблицы
+________________________________________
+Описание основных модулей
+Аутентификация
+Модуль аутентификации интегрирован с Firebase, что обеспечивает надежную и безопасную систему регистрации и авторизации.
+•	Состояние пользователя отслеживается через AuthContext, предоставляя глобальный доступ к информации об аутентификации.
+•	Реализованы защищённые маршруты с помощью ProtectedRoute.jsx для обычных пользователей и AdminProtectedRoute.jsx для администраторов, что гарантирует доступ к определённым страницам только после успешной аутентификации и при наличии соответствующих прав.
+Корзина
+Модуль корзины управляется через CartContext, предоставляя интуитивно понятный интерфейс для управления покупками.
+•	Поддерживаются функции добавления, удаления и очистки товаров из корзины.
+•	Состояние корзины синхронизируется с локальным хранилищем браузера, обеспечивая сохранность данных даже после закрытия вкладки.
+Каталог игр
+Каталог игр является центральной частью приложения, предоставляющей пользователям доступ к обширной коллекции игр.
+•	Хранение и загрузка списка игр реализованы с использованием Redux Toolkit Slice (gamesSlice.js), что обеспечивает централизованное управление данными и легкое масштабирование.
+•	Каталог представлен различными компонентами: GameList для отображения списка игр, GameCard для детального представления каждой игры и CarouselGameCard для интерактивной демонстрации игр.
+YepCoin
+YepCoin — это внутренняя виртуальная валюта, предоставляющая пользователям гибкость в совершении покупок.
+•	Пользователи могут пополнять баланс YepCoin и просматривать историю всех операций.
+•	Для управления YepCoin реализованы специализированные модальные окна: PurchaseYepCoinsModal.jsx для пополнения баланса и YepCoinHistoryModal.jsx для просмотра истории транзакций.
+Админ-панель
+Админ-панель — это мощный инструмент для управления контентом, доступный только администраторам.
+•	Основные компоненты админ-панели включают: AdminDashboard для общего обзора, AddGameModal для добавления новых игр, EditGameModal для редактирования существующих и ConfirmDeleteModal для подтверждения удаления.
+•	Функционал админ-панели позволяет добавлять, редактировать и удалять игры, обеспечивая полный контроль над каталогом.
+Локализация
+Приложение поддерживает многоязычность, предлагая интерфейс на русском и английском языках.
+•	Для реализации локализации используется библиотека i18next.
+•	Все переводы хранятся в отдельных JSON-файлах: locales/en.json для английского языка и locales/ru.json для русского.
+________________________________________
+Пример компонента
+JavaScript
+<GameCard 
+  title="Cyberpunk 2077" 
+  price={5999} 
+  image="/assets/images/cyberpunk.jpg" 
+/>
+Этот пример демонстрирует использование компонента GameCard, который принимает свойства title, price и image для отображения информации об игре в каталоге.
+________________________________________
+Заключение
+Проект YepGames представляет собой полнофункциональное одностраничное приложение (SPA), разработанное с применением современных подходов к созданию веб-интерфейсов. Он демонстрирует уверенное владение библиотекой React, принципами модульного проектирования, а также интеграцию с различными сторонними сервисами и библиотеками.
+Приложение включает в себя все необходимые элементы для полноценного маркетплейса: систему аутентификации, управление пользователями и товарами, многоязычную поддержку, защищённые маршруты, полноценную корзину и уникальную внутреннюю валюту. Благодаря продуманной архитектуре и использованию передовых технологий, YepGames может быть использован как в образовательных целях, так и в качестве основы для реальных коммерческих проектов.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
