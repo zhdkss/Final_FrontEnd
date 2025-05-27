@@ -1,126 +1,123 @@
-Markdown
-
-# Документация проекта «YepGames»
+# YepAndSell Project Documentation
 
 ---
 
-## Описание проекта
+## Project Description
 
-**YepGames** — это полноценное веб-приложение, реализующее концепцию маркетплейса видеоигр. Приложение предоставляет пользователям широкий спектр функций, включая:
+**YepGames** is a full-featured web application implementing the concept of a video game marketplace. The application provides users with a wide range of features, including:
 
-* **Регистрацию и аутентификацию** пользователей
-* **Просмотр обширного каталога игр**
-* **Удобную систему корзины и оформления заказов**
-* **Управление уникальной виртуальной валютой YepCoin**
-* **Мощную админ-панель** для эффективного управления контентом
+* **User registration and authentication**
+* **Browsing an extensive game catalog**
+* **Convenient cart and order checkout system**
+* **Management of a unique virtual currency, YepCoin**
+* **Powerful admin panel** for effective content management
 
-Приложение разработано на основе библиотеки **React** с применением модульной архитектуры, что обеспечивает высокую масштабируемость и легкость поддержки. В процессе разработки использованы современные подходы к управлению состоянием и маршрутизацией, что гарантирует стабильную и быструю работу приложения.
+The application is built using the **React** library with a modular architecture, ensuring high scalability and ease of maintenance. Modern approaches to state management and routing are employed, guaranteeing stable and fast application performance.
 
 ---
 
-## Структура проекта
+## Project Structure
 
-Проект организован по модульному принципу, что упрощает навигацию и разработку новых функций. Ниже представлена структура основных директорий и файлов:
+The project is organized modularly, simplifying navigation and the development of new features. Below is the structure of the main directories and files:
 
 src/
-├── App.jsx                  # Главный компонент приложения, точка входа для всей логики
-├── index.js                # Основной файл для рендеринга React-приложения
-├── Layout.jsx              # Общий шаблон страницы с навигацией и футером
+├── App.jsx                  # Main application component, entry point for all logic
+├── index.js                 # Main file for rendering the React application
+├── Layout.jsx               # General page template with navigation and footer
 
-├── router/                 # Маршрутизация приложения
-│   ├── index.js            # Конфигурация маршрутов с использованием React Router DOM
-│   ├── ProtectedRoute.jsx  # Компонент защиты маршрутов, требующих аутентификации
-│   └── AdminProtectedRoute.jsx  # Компонент защиты маршрутов для администраторов
+├── router/                  # Application routing
+│   ├── index.js             # Route configuration using React Router DOM
+│   ├── ProtectedRoute.jsx   # Route protection component for authenticated users
+│   └── AdminProtectedRoute.jsx  # Route protection component for administrators
 
-├── components/             # Переиспользуемые UI-компоненты (кнопки, карточки, модальные окна и т.д.)
+├── components/              # Reusable UI components (buttons, cards, modals, etc.)
 
-├── pages/                  # Компоненты страниц (Catalog, Cart, Profile, AdminPanel и др.)
+├── pages/                   # Page components (Catalog, Cart, Profile, AdminPanel, etc.)
 
-├── contexts/               # Глобальные контексты состояния (AuthContext, CartContext, ThemeContext и др.)
+├── contexts/                # Global state contexts (AuthContext, CartContext, ThemeContext, etc.)
 
-├── features/               # Redux Toolkit слайсы для управления состоянием (gamesSlice, userSlice и др.)
+├── features/                # Redux Toolkit slices for state management (gamesSlice, userSlice, etc.)
 
-├── store/                  # Конфигурация Redux-хранилища
-│   ├── index.js            # Настройка глобального Redux store
-│   └── hooks.js            # Пользовательские хуки для useSelector и useDispatch
+├── store/                   # Redux store configuration
+│   ├── index.js             # Global Redux store setup
+│   └── hooks.js             # Custom hooks for useSelector and useDispatch
 
-├── locales/                # Файлы локализации для поддержки многоязычности
-│   ├── en.json             # Переводы на английский язык
-│   └── ru.json             # Переводы на русский язык
+├── locales/                 # Localization files for multi-language support
+│   ├── en.json              # English translations
+│   └── ru.json              # Russian translations
 
-├── styles/                 # CSS-модули для стилизации компонентов (инкапсуляция стилей)
+├── styles/                  # CSS modules for component styling (style encapsulation)
 
-└── assets/                 # Статические ресурсы: изображения, иконки, шрифты
+└── assets/                  # Static assets: images, icons, fonts
     ├── images/
     ├── icons/
     └── fonts/
 
+---
+
+## Technologies Used
+
+YepGames employs a set of modern and proven technologies that ensure high performance, reliability, and developer convenience:
+
+| Technology           | Purpose                                                      |
+| :------------------- | :-----------------------------------------------------------|
+| **React**            | Main library for building user interfaces.                  |
+| **React Router DOM** | Library for declarative routing in React applications.      |
+| **Redux Toolkit**    | Recommended approach for global state management, simplifying Redux usage. |
+| **Firebase**         | Cloud platform for user authentication and database services. |
+| **Context API**      | Built-in React mechanism for managing states like cart, theme, language. |
+| **i18next**          | Powerful library for internationalization and interface localization. |
+| **CSS Modules**      | Styling approach that prevents class conflicts and provides encapsulation. |
 
 ---
 
-## Используемые технологии
+## Main Modules Description
 
-В проекте YepGames применен комплекс современных и проверенных технологий, обеспечивающих высокую производительность, надежность и удобство разработки:
+### Authentication
 
-| Технология       | Назначение                                                 |
-| :--------------- | :--------------------------------------------------------- |
-| **React** | Основная библиотека для создания пользовательских интерфейсов. |
-| **React Router DOM** | Библиотека для декларативной маршрутизации в React-приложениях. |
-| **Redux Toolkit** | Рекомендуемый подход для глобального управления состоянием, упрощает работу с Redux. |
-| **Firebase** | Облачная платформа для аутентификации пользователей и работы с базой данных. |
-| **Context API** | Встроенный механизм React для управления состоянием, таким как состояние корзины, темы, языка. |
-| **i18next** | Мощная библиотека для интернационализации и локализации интерфейса. |
-| **CSS Modules** | Подход для модулизации стилей, предотвращающий конфликты классов и обеспечивающий инкапсуляцию. |
+The authentication module is integrated with **Firebase**, providing a secure and reliable registration and login system.
 
----
+* User state is tracked via **AuthContext**, offering global access to authentication information.
+* **Protected routes** are implemented using `ProtectedRoute.jsx` for regular users and `AdminProtectedRoute.jsx` for admins, ensuring access only after successful authentication and appropriate permissions.
 
-## Описание основных модулей
+### Cart
 
-### Аутентификация
+The cart module is managed through **CartContext**, providing an intuitive interface for managing purchases.
 
-Модуль аутентификации интегрирован с **Firebase**, что обеспечивает надежную и безопасную систему регистрации и авторизации.
+* Supports **adding**, **removing**, and **clearing** items in the cart.
+* Cart state is **synchronized with browser local storage**, preserving data even after closing the tab.
 
-* Состояние пользователя отслеживается через **AuthContext**, предоставляя глобальный доступ к информации об аутентификации.
-* Реализованы **защищённые маршруты** с помощью `ProtectedRoute.jsx` для обычных пользователей и `AdminProtectedRoute.jsx` для администраторов, что гарантирует доступ к определённым страницам только после успешной аутентификации и при наличии соответствующих прав.
+### Game Catalog
 
-### Корзина
+The game catalog is the core of the application, providing users access to a large collection of games.
 
-Модуль корзины управляется через **CartContext**, предоставляя интуитивно понятный интерфейс для управления покупками.
-
-* Поддерживаются функции **добавления**, **удаления** и **очистки** товаров из корзины.
-* Состояние корзины **синхронизируется с локальным хранилищем** браузера, обеспечивая сохранность данных даже после закрытия вкладки.
-
-### Каталог игр
-
-Каталог игр является центральной частью приложения, предоставляющей пользователям доступ к обширной коллекции игр.
-
-* Хранение и загрузка списка игр реализованы с использованием **Redux Toolkit Slice** (`gamesSlice.js`), что обеспечивает централизованное управление данными и легкое масштабирование.
-* Каталог представлен различными компонентами: `GameList` для отображения списка игр, `GameCard` для детального представления каждой игры и `CarouselGameCard` для интерактивной демонстрации игр.
+* Storage and loading of the game list are implemented using a **Redux Toolkit Slice** (`gamesSlice.js`), allowing centralized data management and easy scalability.
+* The catalog is presented through various components: `GameList` for displaying the game list, `GameCard` for detailed game representation, and `CarouselGameCard` for interactive game showcase.
 
 ### YepCoin
 
-**YepCoin** — это внутренняя виртуальная валюта, предоставляющая пользователям гибкость в совершении покупок.
+**YepCoin** is the internal virtual currency giving users flexibility in purchases.
 
-* Пользователи могут **пополнять баланс** YepCoin и **просматривать историю** всех операций.
-* Для управления YepCoin реализованы специализированные модальные окна: `PurchaseYepCoinsModal.jsx` для пополнения баланса и `YepCoinHistoryModal.jsx` для просмотра истории транзакций.
+* Users can **top up their YepCoin balance** and **view transaction history**.
+* Specialized modals manage YepCoin: `PurchaseYepCoinsModal.jsx` for topping up and `YepCoinHistoryModal.jsx` for viewing transaction history.
 
-### Админ-панель
+### Admin Panel
 
-Админ-панель — это мощный инструмент для управления контентом, доступный **только администраторам**.
+The admin panel is a powerful tool for content management, accessible **only to administrators**.
 
-* Основные компоненты админ-панели включают: `AdminDashboard` для общего обзора, `AddGameModal` для добавления новых игр, `EditGameModal` для редактирования существующих и `ConfirmDeleteModal` для подтверждения удаления.
-* Функционал админ-панели позволяет **добавлять, редактировать и удалять игры**, обеспечивая полный контроль над каталогом.
+* Main components include: `AdminDashboard` for overview, `AddGameModal` for adding new games, `EditGameModal` for editing existing games, and `ConfirmDeleteModal` for deletion confirmation.
+* The admin panel functionality allows **adding, editing, and deleting games**, providing full control over the catalog.
 
-### Локализация
+### Localization
 
-Приложение поддерживает **многоязычность**, предлагая интерфейс на русском и английском языках.
+The application supports **multiple languages**, offering interfaces in Russian and English.
 
-* Для реализации локализации используется библиотека **i18next**.
-* Все переводы хранятся в отдельных JSON-файлах: `locales/en.json` для английского языка и `locales/ru.json` для русского.
+* Localization is implemented using the **i18next** library.
+* All translations are stored in separate JSON files: `locales/en.json` for English and `locales/ru.json` for Russian.
 
 ---
 
-## Пример компонента
+## Example Component
 
 ```jsx
 <GameCard
@@ -128,15 +125,3 @@ src/
   price={5999}
   image="/assets/images/cyberpunk.jpg"
 />
-Этот пример демонстрирует использование компонента GameCard, который принимает свойства title, price и image для отображения информации об игре в каталоге.
-
-Тестирование
-Проект YepGames включает базовую структуру для юнит-тестирования, что обеспечивает стабильность и надежность кода.
-
-Присутствуют файлы App.test.js и setupTests.js, необходимые для настройки и запуска тестов.
-Окружение для юнит-тестирования настроено с использованием библиотеки Jest, что позволяет легко писать и запускать тесты для компонентов и логики приложения.
-Подготовлена структура для написания дополнительных тестов, что позволяет расширять покрытие по мере развития проекта.
-Заключение
-Проект YepGames представляет собой полнофункциональное одностраничное приложение (SPA), разработанное с применением современных подходов к созданию веб-интерфейсов. Он демонстрирует уверенное владение библиотекой React, принципами модульного проектирования, а также интеграцию с различными сторонними сервисами и библиотеками.
-
-Приложение включает в себя все необходимые элементы для полноценного маркетплейса: систему аутентификации, управление пользователями и товарами, многоязычную поддержку, защищённые маршруты, полноценную корзину и уникальную внутреннюю валюту. Благодаря продуманной архитектуре и использованию передовых технологий, YepGames может быть использован как в образовательных целях, так и в качестве основы для реальных коммерческих проектов.
